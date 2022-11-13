@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useValidate} from '../hooks/useValidate';
 import {showMessage} from 'react-native-flash-message';
 import useVerifyToken from "../hooks/verifyToken";
-import {addClass, getClassByMentor} from "../store/slices/class/classAction";
+import {addClass, addStudent, getClassByMentor} from "../store/slices/class/classAction";
 
 export default function AddStudentModal({ isVisible, closeModal }) {
 
@@ -35,7 +35,7 @@ export default function AddStudentModal({ isVisible, closeModal }) {
             }
             setvalidate(validate)
             if (validate.code.isValid && validate.name.isValid && validate.note.isValid ) {
-                dispatch(addClass({
+                dispatch(addStudent({
                     code : code,
                     name : name,
                     note : note,

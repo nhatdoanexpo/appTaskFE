@@ -18,3 +18,11 @@ export const addClass = createAsyncThunk(
     }
 )
 
+export const addStudent = createAsyncThunk(
+    'class',
+    async(data, thunkAPI) => {
+        const res = await classServices.addClass(data)
+        return res
+    }
+)
+
