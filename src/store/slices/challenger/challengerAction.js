@@ -22,9 +22,9 @@ export const getAllTypeChallenger = createAsyncThunk(
 export const addChallenger = createAsyncThunk(
     'challenger/addChallenger',
     async(data, thunkAPI) => {
-        const {classID,typeID,name,note} = data
+        const {classID,typeID,name,note,teacherId} = data
         console.log(data)
-        const res = await ChallengerServices.addChallenger(classID,typeID,name,note)
+        const res = await ChallengerServices.addChallenger(classID,typeID,name,note,teacherId)
         return res
     }
 )

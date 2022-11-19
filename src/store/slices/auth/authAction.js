@@ -18,3 +18,13 @@ export const userRegister = createAsyncThunk(
         return response
     }
 )
+
+
+export const getUser = createAsyncThunk(
+    'user/getUser',
+    async (data, thunkAPI) => {
+        const {id } = data
+        const response = await authServices.getUserInfo(id)
+        return response
+    }
+)

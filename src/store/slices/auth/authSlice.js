@@ -11,7 +11,9 @@ const authSlice = createSlice({
         error: null,
         success: false,
         token : '',
-        userInfo : {}
+        userInfo : {},
+        user : {} ,
+        listClassData: []
 
     },
     reducers: {
@@ -38,7 +40,7 @@ const authSlice = createSlice({
             state.error = null
         })
         .addCase(userLogin.fulfilled,(state,action)=> {
-            const {accessToken,role,success, message,email,name} = action.payload
+            const {accessToken,role,success, message,email,name,user,listClassData} = action.payload
             success ? AsyncStorage.setItem('access_Token',accessToken) : AsyncStorage.setItem('access_Token','')
             return {
                 ...state,
@@ -51,7 +53,9 @@ const authSlice = createSlice({
                 userInfo : {
                     name : name,
                     email : email
-                }
+                },
+                user : user ,
+                listClassData: listClassData
             }
         })
         .addCase(userLogin.rejected,(state,action)=> {

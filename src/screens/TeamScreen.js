@@ -33,8 +33,7 @@ export default function Teamscreen(props) {
     const loading = useSelector(state => state.class.loading)
     return (
         <Loadingcontent loading={loading}>
-            <AddStudentModal isVisible={isShow}
-                           closeModal={() => setIsShow(false)}/>
+
         <View style={styles.container}>
             <ItemBottomSheet
                 listValue={listClass} 
@@ -60,17 +59,7 @@ export default function Teamscreen(props) {
                 renderItem={renderItem}/>
             </View>
         </View>
-            {(userRole == 'GV') &&
-                <Custombutton   btnTitle={'Thêm học viên'}
-                                btnColor={COLORS.yellow}
-                                titleColor={COLORS.text}
-                                marginHorizontal={10}
-                                marginVertical={10}
-                                txtSize={20}
-                                btnHeight={10}
-                                onPress={() =>{
-                                    setIsShow(true)
-                                } }/>}
+
         </Loadingcontent>
     )
 }
