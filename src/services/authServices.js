@@ -37,9 +37,15 @@ const authServices = {
     },
     getUserInfo : async(id) => {
         return new Promise((resolve,reject)=> {
-            api.call().get(`'/auth/userById/${id}`)
-                .then(res => resolve(res.data))
-                .catch(err => reject(err))
+            api.call().get(`/auth/userById/${id}`)
+                .then(
+                    res => {
+                        const {data} = res
+                        resolve(data)
+                    }
+                ).catch(
+                err => reject(err)
+            )
         })
     }
 }
