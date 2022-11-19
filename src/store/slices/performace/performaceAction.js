@@ -1,5 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import PerformanceServices from "../../../services/performanceServices";
+import authServices from "../../../services/authServices";
 
 export const getPerformanceByStudent = createAsyncThunk(
     'performace/getByStudent',
@@ -19,5 +20,13 @@ export const updateStatus = createAsyncThunk(
             res : res,
             performaceID : performaceID
         }
+    }
+)
+export const refreshData = createAsyncThunk(
+    'performace/refreshData',
+    async (data, thunkAPI) => {
+        const {id } = data
+        const response = await authServices.getUserInfo(id)
+        return response
     }
 )

@@ -1,5 +1,6 @@
 import {createSlice, current} from '@reduxjs/toolkit';
-import {getPerformanceByStudent, updateStatus} from './performaceAction';
+import {getPerformanceByStudent, refreshData, updateStatus} from './performaceAction';
+import {getUser} from "../auth/authAction";
 
 const performaceSlice = createSlice({
     name : 'performace',
@@ -49,6 +50,16 @@ const performaceSlice = createSlice({
         },
         [updateStatus.rejected] : (state) => {
             state.loading  = false
+        },
+        [refreshData.fulfilled] : (state) => {
+            state.listPerformance = []
+            state.loading  = true
+        },
+        [refreshData.rejected] : (state) => {
+            state.loading  = false
+        },
+        [refreshData.pending] : (state) => {
+            state.loading = true
         }
     }
 })

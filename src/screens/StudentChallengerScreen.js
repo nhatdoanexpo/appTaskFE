@@ -4,7 +4,7 @@ import {FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux'
 import StudentPerformitem from '../components/Student_PerformItem';
 import useVerifyToken from '../hooks/verifyToken'
-import {getPerformanceByStudent} from '../store/slices/performace/performaceAction';
+import {getPerformanceByStudent, refreshData} from '../store/slices/performace/performaceAction';
 import Loadingcontent from '../components/LoadingContent';
 import Smalltext from '../components/SmallText';
 import Custombutton from "../components/CustomButton";
@@ -35,7 +35,7 @@ export default function Studentchallengerscreen(props) {
 
     const handleLoadChallenger = (value) => {
         console.log('refresh data')
-        dispatch(getUser({ id: userID }))
+        dispatch(refreshData({ id: userID }))
             .then(
                 res => {
                     console.log('refresh data and load new')

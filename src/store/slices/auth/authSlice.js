@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {userLogin, userRegister} from "./authAction";
+import {getUser, userLogin, userRegister} from "./authAction";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const authSlice = createSlice({
