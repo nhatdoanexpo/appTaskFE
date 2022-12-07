@@ -34,31 +34,31 @@ export default function Teamscreen(props) {
     return (
         <Loadingcontent loading={loading}>
 
-        <View style={styles.container}>
-            <ItemBottomSheet
-                listValue={listClass} 
-                isVisible={isVisible_chooseClass}
-                offBottomSheet={()=> setisVisible_chooseClass(false)}
-                chooseValue={chooseValue}/>
+            <View style={styles.container}>
+                <ItemBottomSheet
+                    listValue={listClass}
+                    isVisible={isVisible_chooseClass}
+                    offBottomSheet={()=> setisVisible_chooseClass(false)}
+                    chooseValue={chooseValue}/>
 
-            <View style={styles.dropDownClass}>
-                <View style={styles.className}>
-                    <Smalltext>Lớp :</Smalltext>
-                    <Smalltext color={COLORS.pink} bold={true}> {classInfo?.code}</Smalltext>
+                <View style={styles.dropDownClass}>
+                    <View style={styles.className}>
+                        <Smalltext>Lớp :</Smalltext>
+                        <Smalltext color={COLORS.pink} bold={true}> {classInfo?.code}</Smalltext>
+                    </View>
+                    <TouchableOpacity style={styles.fillBox}
+                                      onPress={() => setisVisible_chooseClass(true)}>
+                        <Ionicon name='funnel-outline' size={25} style={styles.btnOpen} />
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.fillBox}
-                    onPress={() => setisVisible_chooseClass(true)}>
-                    <Ionicon name='funnel-outline' size={25} style={styles.btnOpen} />
-                </TouchableOpacity>
+                <View style ={styles.listStudent}>
+                    <FlatList
+                        data = {classInfo ? classInfo.studentsDetail : []}
+                        keyExtractor={item => item.id}
+                        showsVerticalScrollIndicator={false}
+                        renderItem={renderItem}/>
+                </View>
             </View>
-            <View style ={styles.listStudent}>
-                <FlatList
-                data = {classInfo ? classInfo.student : []}
-                keyExtractor={item => item._id}
-                showsVerticalScrollIndicator={false}
-                renderItem={renderItem}/>
-            </View>
-        </View>
 
         </Loadingcontent>
     )

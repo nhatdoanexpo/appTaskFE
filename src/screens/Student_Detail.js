@@ -18,7 +18,7 @@ export default function StudentDetail({ route }) {
     const [listDone, setlistDone] = useState()
     const [isLoading, setisLoading] = useState(true)
     useEffect(() => {
-        PerformanceServices.getPerformanceByStudentID(route.params.studentData._id)
+        PerformanceServices.getPerformanceByStudentID(route.params.studentData.id)
             .then(res => {
                 const list = res.listPerfomace
                 setlist(list)

@@ -40,7 +40,7 @@ const authSlice = createSlice({
             state.error = null
         })
         .addCase(userLogin.fulfilled,(state,action)=> {
-            const {accessToken,role,success, message,email,name,user,listClassData} = action.payload
+            const {accessToken,role,success, message,email,name,user,listClassData,id} = action.payload
             success ? AsyncStorage.setItem('access_Token',accessToken) : AsyncStorage.setItem('access_Token','')
             return {
                 ...state,
@@ -52,7 +52,9 @@ const authSlice = createSlice({
                 token : accessToken,
                 userInfo : {
                     name : name,
-                    email : email
+                    email : email,
+                    role : role,
+                    id : id
                 },
                 user : user ,
                 listClassData: listClassData

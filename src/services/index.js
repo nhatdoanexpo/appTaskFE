@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = 'https://app-task-mana-demo.herokuapp.com/api'
+const baseUrl = 'https://apptaskmana.onrender.com/api'
 const api = {
     call : () => {
         return axios.create({
